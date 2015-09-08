@@ -1,9 +1,9 @@
-NodeJS for OpenShift - Docker images
+NodeJS for DeployDock - Docker images
 ========================================
 
 This repository contains the source for building various versions of
 the Node.JS application as a reproducible Docker image using
-[source-to-image](https://github.com/openshift/source-to-image).
+[source-to-image](https://github.com/Meros-io/source-to-image).
 Users can choose between RHEL and CentOS based builder images.
 The resulting image can be run using [Docker](http://docker.io).
 
@@ -29,7 +29,7 @@ To build a Node.JS image, choose either the CentOS or RHEL based image:
     subscribed RHEL machine.
 
     ```
-    $ git clone https://github.com/openshift/sti-nodejs.git
+    $ git clone https://github.com/Meros-io/sti-nodejs.git
     $ cd sti-nodejs
     $ make build TARGET=rhel7 VERSION=0.10
     ```
@@ -39,13 +39,13 @@ To build a Node.JS image, choose either the CentOS or RHEL based image:
     This image is available on DockerHub. To download it run:
 
     ```
-    $ docker pull openshift/nodejs-010-centos7
+    $ docker pull deploydock/nodejs-010-centos7
     ```
 
     To build a Node.JS image from scratch run:
 
     ```
-    $ git clone https://github.com/openshift/sti-nodejs.git
+    $ git clone https://github.com/Meros-io/sti-nodejs.git
     $ cd sti-nodejs
     $ make build VERSION=0.10
     ```
@@ -57,19 +57,19 @@ you can omit this parameter.**
 
 Usage
 ---------------------
-To build a simple [nodejs-sample-app](https://github.com/openshift/sti-nodejs/tree/master/0.10/test/test-app) application
-using standalone [STI](https://github.com/openshift/source-to-image) and then run the
+To build a simple [nodejs-sample-app](https://github.com/Meros-io/sti-nodejs/tree/master/0.10/test/test-app) application
+using standalone [STI](https://github.com/Meros-io/source-to-image) and then run the
 resulting image with [Docker](http://docker.io) execute:
 
 *  **For RHEL based image**
     ```
-    $ s2i build https://github.com/openshift/sti-nodejs.git --context-dir=0.10/test/test-app/ openshift/nodejs-010-rhel7 nodejs-sample-app
+    $ s2i build https://github.com/Meros-io/sti-nodejs.git --context-dir=0.10/test/test-app/ deploydock/nodejs-010-rhel7 nodejs-sample-app
     $ docker run -p 8080:8080 nodejs-sample-app
     ```
 
 *  **For CentOS based image**
     ```
-    $ s2i build https://github.com/openshift/sti-nodejs.git --context-dir=0.10/test/test-app/ openshift/nodejs-010-centos7 nodejs-sample-app
+    $ s2i build https://github.com/Meros-io/sti-nodejs.git --context-dir=0.10/test/test-app/ deploydock/nodejs-010-centos7 nodejs-sample-app
     $ docker run -p 8080:8080 nodejs-sample-app
     ```
 
@@ -81,7 +81,7 @@ $ curl 127.0.0.1:8080
 
 Test
 ---------------------
-This repository also provides a [S2I](https://github.com/openshift/source-to-image) test framework,
+This repository also provides a [S2I](https://github.com/Meros-io/source-to-image) test framework,
 which launches tests to check functionality of a simple Node.JS application built on top of the sti-nodejs image.
 
 Users can choose between testing a Node.JS test application based on a RHEL or CentOS image.
@@ -123,7 +123,7 @@ Repository organization
 
     * **`s2i/bin/`**
 
-        This folder contains scripts that are run by [STI](https://github.com/openshift/source-to-image):
+        This folder contains scripts that are run by [STI](https://github.com/Meros-io/source-to-image):
 
         *   **assemble**
 
@@ -146,16 +146,16 @@ Repository organization
 
     * **`test/`**
 
-        This folder contains the [S2I](https://github.com/openshift/source-to-image)
+        This folder contains the [S2I](https://github.com/Meros-io/source-to-image)
         test framework with simple Node.JS echo server.
 
         * **`test-app/`**
 
-            A simple Node.JS echo server used for testing purposes by the [S2I](https://github.com/openshift/source-to-image) test framework.
+            A simple Node.JS echo server used for testing purposes by the [S2I](https://github.com/Meros-io/source-to-image) test framework.
 
         * **run**
 
-            This script runs the [S2I](https://github.com/openshift/source-to-image) test framework.
+            This script runs the [S2I](https://github.com/Meros-io/source-to-image) test framework.
 
 * **`hack/`**
 
@@ -164,13 +164,13 @@ Repository organization
 
 Image name structure
 ------------------------
-##### Structure: openshift/1-2-3
+##### Structure: deploydock/1-2-3
 
 1. Platform name (lowercase) - nodejs
 2. Platform version(without dots) - 010
 3. Base builder image - centos7/rhel7
 
-Examples: `openshift/nodejs-010-centos7`, `openshift/nodejs-010-rhel7`
+Examples: `deploydock/nodejs-010-centos7`, `deploydock/nodejs-010-rhel7`
 
 
 Environment variables

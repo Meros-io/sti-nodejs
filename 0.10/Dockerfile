@@ -1,9 +1,9 @@
-FROM openshift/base-centos7
+FROM deploydock/base-centos7
 
 # This image provides a Node.JS environment you can use to run your Node.JS
 # applications.
 
-MAINTAINER SoftwareCollections.org <sclorg@redhat.com>
+MAINTAINER Eric Sites <eric@meros.io>
 
 EXPOSE 8080
 
@@ -11,8 +11,8 @@ ENV NODEJS_VERSION 0.10
 
 LABEL io.k8s.description="Platform for building and running Node.js 0.10 applications" \
       io.k8s.display-name="Node.js 0.10" \
-      io.openshift.expose-services="8080:http" \
-      io.openshift.tags="builder,nodejs,nodejs010"
+      io.deploydock.expose-services="8080:http" \
+      io.deploydock.tags="builder,nodejs,nodejs010"
 
 RUN yum install -y \
     https://www.softwarecollections.org/en/scls/rhscl/v8314/epel-7-x86_64/download/rhscl-v8314-epel-7-x86_64.noarch.rpm \
